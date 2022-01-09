@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre consola</em></p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+    <script>
+        //Global scope
+        /* var message = 'Hello World'
+
+        var $ = function (message) { 
+            console.log('Say:' + message);  //Se rescribe el scope global de jquery
+         } */
+         //Aparce en windows en entorno global, pasa lo mismo con un cdn, las variables que se necesiten seran globales y se pueden acceder desde window
+        
+         //Function scope
+        //  function imprimirNum() { 
+        //      for(var i = 0; i<10; i++){ //var: JS la declara antes y el scope sale globlal, var queda como global i se suma hasta 10 por retener el settimeout en callback queue (Async)
+        //          /* setTimeout(() => {
+        //              console.log(i); //Se respite 10 veces 10
+        //          }, 100); */
+
+        //          function eventNumber(numer) {
+        //             setTimeout(() => {
+        //              console.log(numer); //Un nuevo entorno de scope, el callback queue no interfiere
+        //          }, 100);
+        //          }
+
+        //          eventNumber(i); //se repite del 0 al 9 por estar en otro entorno
+        //      }
+        //   }
+
+        //   imprimirNum();
+
+
+          //Block scope
+
+          function imprimirNum2() { 
+             for(let i = 0; i<10; i++){ //Let no se declara antes, entra en el bloque y no se suma, imprime del 0 a 9
+                setTimeout(() => {
+                     console.log(i);
+                 }, 100);
+             }
+          }
+
+          imprimirNum2();
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre consola</em></p>
+
+    <h1>
+        <code>this</code> se refiere a un objeto. Ese objeto es el que actualmente está ejecutando un pedazo de codigo
+
+        <!-- No se puede asignar un valor a this directamente y este depende de en que scope nos encontramos. -->
+    </h1>
+
+    <script>
+                //this en scope global
+                    console.log(`this = ${this}`); //el this es windows
+                    // this en el scope de una funcion
+
+                    function whoIsThis() {
+                        return this
+                    }
+
+                    console.log(`whoIsThis = ${whoIsThis()}`);  //No hay algun metodo que interfiera, this sin strict mode se declara en automatico por JS a window
+                    // this en el scope de una funcion en strict name
+
+                    function whoIsThisStrict() {
+                        'use strict'
+                        return this
+                    }
+                    console.log(`whoIsThisStrict = ${whoIsThisStrict()}`); //En strict mode el motor de JS no define en automatico el this
+
+                    //this en el contexto de un objeto
+                    const person = {
+                        name: 'Victor',
+                        saludar: function () {
+                            console.log(`Hola soy ${this.name}`); //El scope de this se refiere al mismo objeto
+                        }
+                    }
+
+                    person.saludar();
+
+                    //this cuando sacamos a una funcion de un objeto
+
+                    // const accion = function() {
+                    //     this.name = 'Manuel';
+                    //     let acc = person.saludar;
+
+                    //     acc();
+                    // }  //solo se pasan los parametros al no ejecutarse this pierde su scope del objeto {person} queda vacio, el scope pasa a la variable que lo ejecuta
+
+                    const accion = person.saludar;
+                    accion();
+
+
+                    
+                    //this en clases
+
+                    function Person(name) {
+                        //this ={};
+                        this.name = name;  //un constructor
+                    }
+
+                    Person.prototype.saludar = function () {
+                        console.log(`Hola soy ${this.name} y estoy en una clase`);
+                    }
+
+                    const name = new Person('Victor');
+                    name.saludar();
+    </script>
+</body>
+</html>

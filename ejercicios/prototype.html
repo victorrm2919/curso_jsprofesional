@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre consola</em></p>
+
+    <script>
+        //Objeto comun y corriente *****************************
+        /*  const mario = {
+             name: 'Mario'
+         }
+         mario.saludar= function () {  
+             console.log(`Hola soy ${this.name}`);
+         }
+         mario.saludar();
+ 
+         const link = {
+             name: 'link'
+         }
+         link.saludar= function () {  
+             console.log(`Hola soy ${this.name}`);
+         }
+         link.saludar(); */
+
+        // De una forma mas eficiente ********************************
+
+        /* function Hero(name) {
+            const hero = {
+                name: name,
+            }
+            hero.saludar = function () {
+                console.log(`Hola soy ${this.name}`);
+            }
+            return hero
+        }
+
+        const zelda = Hero('Zelda');
+        zelda.saludar();
+
+        const zelda = Hero('Link');
+        zelda.saludar(); */
+
+        //Aun mejorando mas ************************
+
+        /* const heroMethods = {
+            saludar: function () {
+                console.log(`soy ${this.name}`);
+            }
+        }
+
+
+         function Hero(name) {
+            const hero = {
+                name: name,
+            }
+            hero.saludar = heroMethods.saludar
+            return hero
+        }
+
+        const zelda = Hero('Zelda');
+        zelda.saludar();
+
+        const link = Hero('Link');
+        link.saludar(); */
+
+        // Object.create ********************
+        // const obj = Object.create(objeto)
+
+        /* const heroMethods = {
+            saludar: function () {
+                console.log(`Soy ${this.name}`);
+            }
+        }
+
+
+         function Hero(name) {
+            const hero = Object.create(heroMethods)
+            hero.name = name
+            return hero
+        }
+
+        const zelda = Hero('Zelda');
+        zelda.saludar();
+
+        const link = Hero('Link');
+        link.saludar(); */
+
+        //hero dentro de Hero
+
+        /* function Hero(name) {
+            const hero = Object.create(Hero.prototype)
+            hero.name = name
+            return hero
+        }
+
+        Hero.prototype.saludar = function () {
+            console.log(`Soy ${this.name}`);
+        }
+
+        const zelda = Hero('Zelda');
+        zelda.saludar();
+
+        const link = Hero('Link');
+        link.saludar(); */
+
+        // Con New *******************+
+
+        function Hero(name) {
+            // const hero = Object.create(Hero.prototype) // Al tener new esta linea se inicia sola; se inicializa prototype en el this
+            this.name = name
+            // return this; // Ocurre implicitamente, ya no es necesario retornar
+        }
+
+        Hero.prototype.saludar = function () {
+            console.log(`New: ${this.name}`);
+        }
+
+        const zelda = new Hero('Zelda');
+        zelda.saludar();
+
+        const link = new Hero('Link');
+        link.saludar();
+
+
+
+    </script>
+</body>
+
+</html>

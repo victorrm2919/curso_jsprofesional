@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre consola</em></p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+    <script>
+        //Closures
+
+        //printColor
+        //Funciones autollamadas son IIFE
+        // (function() {
+        //     //Sin el IIFE el scope de color se vuelve global, con IIFE el alcance del scope se queda en la funcion
+        //     let color = 'green';
+
+        //     function printColor() {
+        //         console.log(color);
+        //     }
+
+        //     printColor();
+        // })();
+
+        //Funciones que regresan funciones
+        // function makeColorPrinter(color) {
+        //     let colorMessage = 'The color is ' + color;
+        //     return function () { 
+        //         console.log(colorMessage);
+        //      }
+        // } 
+
+        // let greenColorPrinter = makeColorPrinter('green');  //se envia parametros a funcion, se regresa otra funcion
+        
+        // greenColorPrinter(); //al regresar otra funcion tiene que ejecutarse de nuevo para poder imprimir o hacer lo que se tiene en la funcion retornada
+
+        //variables privadas
+
+        function makeCounter(n) {
+            let count = n;
+            return {
+                increase: function () {
+                    count++;
+                },
+                decreate: function() {
+                    count--;
+                },
+                getCount: function () {
+                    return count;
+                }
+            }
+        }
+
+        let counter = makeCounter(7)
+
+        console.log(counter.getCount());
+        counter.increase();
+        console.log(counter.getCount());
+        counter.decreate()
+        counter.decreate()
+        counter.decreate()
+        console.log(counter.getCount());
+
+
+    </script>
+</body>
+</html>

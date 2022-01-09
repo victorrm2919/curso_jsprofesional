@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call - Apply- Bind</title>
+</head>
+
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre consola</em></p>
+
+    <ul>
+        <li><button class="call-to-action">Aprender</button></li>
+        <li><button class="call-to-action">Aprender mas</button></li>
+        <li><button class="call-to-action">¡Nunca pares de aprender!</button></li>
+    </ul>
+
+    <script>
+        //Estableciendo 'this'
+        //Estableciendo 'this' usando 'call'
+        function saludar() { 
+            console.log(`Hola soy ${this.name} ${this.apellido}`);
+        }
+
+        const person = {
+            name : 'Victor',
+            apellido: 'Ruiz'
+        }
+
+        saludar.call(person);
+
+        function caminar(metros, direccion) { //function con parametros
+            console.log(`${this.name} camina ${metros} metros hacia el ${direccion}`);
+        }
+
+        caminar.call(person, 400, 'norte') //se define this y argumentos
+
+        //Establecer 'this' con 'apply'
+        const valores = [900, 'sur']
+        caminar.apply(person, valores) //A comparacion de call los argumentos se envian como array
+
+        //Establecer 'this' con 'bind'
+
+        const newPerson = {
+            name: 'Daniel',
+            apellido: 'Sanchez'
+        }
+
+        const newSaludo = saludar.bind(newPerson) //Crea una nueva funcion
+        newSaludo();
+
+        const caminoNewPerson = caminar.bind(newPerson, '2000'); //Currying: permite guardar argumentos parciales, no es necesario todos los argumentos, en el llamado de la nueva funcion se pude añadir los faltentes
+        caminoNewPerson('Este');
+
+        //Cuando es util usarlos 
+        const buttons = document.getElementsByClassName('call-to-action');
+        //No funciona es en NodeList
+        // buttons.forEach(btn => {
+        //     btn.onclick = () => alert('Nunca pares de aprender!')
+        // })
+
+        //NodeList
+
+        Array.prototype.forEach.call(buttons, btn => {
+            btn.onclick = () => alert('Nunca pares de aprender!')
+        })
+    </script>
+</body>
+
+</html>
