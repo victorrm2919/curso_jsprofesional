@@ -19,7 +19,7 @@ class AutoPause {
 
 		observer.observe(this.player.media);
 
-		document.addEventListener('visibilitychange', this.handlerVisibilityChange); //Dectecta el cambio en el tab
+		document.addEventListener('visibilitychange', this.handlerVisibilityChange); //Detecta el cambio en el tab
 	}
 
 	private handlerIntersection(entries: IntersectionObserverEntry[]) {
