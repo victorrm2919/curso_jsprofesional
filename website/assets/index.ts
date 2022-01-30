@@ -1,7 +1,7 @@
-import MediaPlayer from './MediaPlayer';
-import AutoPlay from './plugins/AutoPlay';
-import AutoPause from   './plugins/AutoPause';
-import AdsPlugin from './plugins/Ads';
+import MediaPlayer from 'victorrm-platzimediaplayer';
+import AutoPlay from 'victorrm-platzimediaplayer/lib/plugins/AutoPlay';
+import AutoPause from   'victorrm-platzimediaplayer/lib/plugins/AutoPause';
+import AdsPlugin from 'victorrm-platzimediaplayer/lib/plugins/Ads';
 
 const video = document.querySelector('video');
 const btnPlayPause: HTMLElement = document.querySelector('#play_pause');
